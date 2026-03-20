@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# Alesis QuadraVerb 2 Patch Editor Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A hardware-faithful structural editor for the Alesis QuadraVerb 2, based on the original 8-block paradigm. This application enforces strict routing rules, DSP limits, memory limits, and microprocessor-assist exclusions exactly as the hardware operates.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **8-Block Graphic Routing:** Visualize and interact with the effect chain via a React Flow node canvas.
+- **Hardware Accuracy:**
+    - 100% total DSP budget (1% cost for standard patch cords, 2% cost for attenuated routes).
+    - 5455.9 ms total Delay Memory budget (max 5000 ms per delay line).
+    - 4 LFOs maximum per program.
+    - Single Microprocessor Assist limit (allows only one Phasor, Stereo Lezlie, or Ring Modulator).
+- **Graph Traversal Audibility Validation:** Automatically highlights (via forward/backward BFS) blocks that have no direct or indirect path from `L_IN`/`R_IN` to `L_OUT`/`R_OUT`.
+- **Feedback & Clipping Detection:** Uses cycle detection to warn of feedback loops, and highlights potential clipping risks.
+- **Save & Load:** Export programs to JSON, and import them directly to continue editing.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** & **TypeScript**
+- **Vite**
+- **React Flow** (for the node editor)
+- **Tailwind CSS v4** (for styling)
+- **Vitest** (for unit testing the core domain limits)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Run the local development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Running Tests
+
+Execute the validation engine unit tests:
+
+```bash
+npm run test
+```
+
+## Architecture
+
+The project is broken into specific modules to maintain separation of concerns:
+
+- `src/domain/types.ts`: Core data structures (`Block`, `Route`, `MixSettings`, `Program`).
+- `src/domain/metadata.ts`: Static hardware properties for various effect types (DSP costs, LFO usage).
+- `src/domain/validation.ts`: The pure-function limit engine. Traverses graphs and sums budgets without side effects.
+- `src/hooks/useProgramState.ts`: Manages application state and local imports/exports.
+- `src/components/EditorPanel.tsx`: The side panel used for destination-based patch cord routing (per the hardware standard).
+- `src/components/GraphView.tsx`: The visual node representation built with React Flow.
