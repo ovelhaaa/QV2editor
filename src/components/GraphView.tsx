@@ -99,7 +99,7 @@ export function GraphView({
       else if (route.source.includes('.')) sourceHandle = route.source.split('.')[1]; // L, R, M
 
       const targetId = route.destination;
-      let targetHandle = 'in';
+      const targetHandle = 'in';
       if (route.destination === 'L_OUT') {
         // We map to the generic OUT node and target L_OUT handle
         edges.push({

@@ -516,7 +516,7 @@ export const effectTypes: EffectTypeDefinition[] = [
 
     return {
       id: baseId,
-      family: "REVERB" as "REVERB",
+      family: "REVERB" as const,
       displayName: displayName.charAt(0).toUpperCase() + displayName.slice(1).toLowerCase(),
       outputs: ["L", "R"] as Array<"L" | "R" | "M">,
       resourceUsage: { dspPercentBase: dsp, lfoCountBase: isTier2 ? 1 : 0, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
@@ -529,7 +529,7 @@ export const effectTypes: EffectTypeDefinition[] = [
 
   {
     id: "REVERB_MONO_ROOM",
-    family: "REVERB" as "REVERB",
+    family: "REVERB" as const,
     displayName: "Mono Room",
     outputs: ["M"] as Array<"L" | "R" | "M">,
     resourceUsage: { dspPercentBase: 28, lfoCountBase: 0, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
@@ -556,7 +556,7 @@ export const effectTypes: EffectTypeDefinition[] = [
   ...(["LARGE_PLATE", "LARGE_ROOM"].map(type => {
     return {
       id: `REVERB_${type}`,
-      family: "REVERB" as "REVERB",
+      family: "REVERB" as const,
       displayName: type === "LARGE_PLATE" ? "Large Plate" : "Large Room",
       outputs: ["L", "R"] as Array<"L" | "R" | "M">,
       resourceUsage: { dspPercentBase: type === "LARGE_PLATE" ? 67 : 91, lfoCountBase: 1, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
@@ -585,7 +585,7 @@ export const effectTypes: EffectTypeDefinition[] = [
 
   {
     id: "REVERB_SPRING",
-    family: "REVERB" as "REVERB",
+    family: "REVERB" as const,
     displayName: "Spring",
     outputs: ["L", "R"] as Array<"L" | "R" | "M">,
     resourceUsage: { dspPercentBase: 41, lfoCountBase: 0, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
@@ -609,7 +609,7 @@ export const effectTypes: EffectTypeDefinition[] = [
   },
   {
     id: "REVERB_NONLINEAR",
-    family: "REVERB" as "REVERB",
+    family: "REVERB" as const,
     displayName: "Nonlinear",
     outputs: ["L", "R"] as Array<"L" | "R" | "M">,
     resourceUsage: { dspPercentBase: 38, lfoCountBase: 0, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
@@ -627,7 +627,7 @@ export const effectTypes: EffectTypeDefinition[] = [
   },
   {
     id: "REVERB_REVERSE",
-    family: "REVERB" as "REVERB",
+    family: "REVERB" as const,
     displayName: "Reverse",
     outputs: ["L", "R"] as Array<"L" | "R" | "M">,
     resourceUsage: { dspPercentBase: 38, lfoCountBase: 0, effectMemoryBaseMs: 0, usesMicroprocessorAssist: false },
