@@ -77,12 +77,12 @@ class WebMidiService {
     // Remove existing subscription if any
     this.unsubscribeFromInput(inputId);
 
-    const listener = (event: Event) => {
-      const midiEvent = event as MIDIMessageEvent;
-      if (midiEvent.data) {
-        handler(midiEvent.data);
-      }
-    };
+const listener = (event: MIDIMessageEvent) => {
+  if (event.data) {
+    handler(event.data);
+  }
+
+};
 
     input.addEventListener("midimessage", listener);
     this.inputSubscriptions.set(inputId, listener);
