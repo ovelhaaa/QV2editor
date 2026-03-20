@@ -28,10 +28,10 @@ describe('Validation Engine', () => {
 
   it('detects DSP_IS_FULL correctly and calculates route costs', () => {
     const p = getEmptyProgram();
-    // 3 x Hall Reverb = 120% DSP -> DSP_IS_FULL
-    p.blocks[0] = { id: 1, family: 'REVERB', effectType: 'REVERB_HALL', parameters: {} };
-    p.blocks[1] = { id: 2, family: 'REVERB', effectType: 'REVERB_HALL', parameters: {} };
-    p.blocks[2] = { id: 3, family: 'REVERB', effectType: 'REVERB_HALL', parameters: {} };
+    // 3 x Chamber 1 (40% each) = 120% DSP -> DSP_IS_FULL
+    p.blocks[0] = { id: 1, family: 'REVERB', effectType: 'REVERB_CHAMBER_1', parameters: {} };
+    p.blocks[1] = { id: 2, family: 'REVERB', effectType: 'REVERB_CHAMBER_1', parameters: {} };
+    p.blocks[2] = { id: 3, family: 'REVERB', effectType: 'REVERB_CHAMBER_1', parameters: {} };
 
     // Add 0dB route (+1%) and attenuated route (+2%)
     p.routes.push({ id: 'r1', source: 'Block1.L', destination: 'Block2', levelDb: 0 });
@@ -55,11 +55,12 @@ describe('Validation Engine', () => {
 
   it('detects OUT_OF_LFOs', () => {
     const p = getEmptyProgram();
-    // 3 x Stereo Lezlie (2 LFOs each) = 6 LFOs -> OUT_OF_LFOs
-    p.blocks[0] = { id: 1, family: 'PITCH', effectType: 'PITCH_STEREO_LEZLIE', parameters: {} };
-    p.blocks[1] = { id: 2, family: 'PITCH', effectType: 'PITCH_STEREO_LEZLIE', parameters: {} }; // Duplicate allowed for test purposes
-    p.blocks[2] = { id: 3, family: 'PITCH', effectType: 'PITCH_STEREO_LEZLIE', parameters: {} };
-    // Ignore the microprocessor assist error for this specific assertion
+    // Mono Lezlie has 2 LFOs.
+    // 3 x Mono Lezlie (2 LFOs each) = 6 LFOs -> OUT_OF_LFOs
+    p.blocks[0] = { id: 1, family: 'PITCH', effectType: 'PITCH_MONO_LEZLIE', parameters: {} };
+    p.blocks[1] = { id: 2, family: 'PITCH', effectType: 'PITCH_MONO_LEZLIE', parameters: {} };
+    p.blocks[2] = { id: 3, family: 'PITCH', effectType: 'PITCH_MONO_LEZLIE', parameters: {} };
+
     const result = validateProgram(p);
     expect(result.errors.some(e => e.type === 'OUT_OF_LFOs')).toBe(true);
     expect(result.metrics.lfosUsed).toBe(6);
@@ -67,7 +68,7 @@ describe('Validation Engine', () => {
 
   it('detects EFFECT_MEMORY_IS_FULL for single delay line over 5000ms', () => {
     const p = getEmptyProgram();
-    p.blocks[0] = { id: 1, family: 'DELAY', effectType: 'DELAY_MONO', parameters: { delayTimeMs: 5001 } };
+    p.blocks[0] = { id: 1, family: 'DELAY', effectType: 'DELAY_MONO_DELAY', parameters: { delayTimeMs: 5001 } };
 
     const result = validateProgram(p);
     expect(result.isValid).toBe(false);
@@ -76,8 +77,8 @@ describe('Validation Engine', () => {
 
   it('detects EFFECT_MEMORY_IS_FULL for total delay memory over 5455.9ms', () => {
     const p = getEmptyProgram();
-    p.blocks[0] = { id: 1, family: 'DELAY', effectType: 'DELAY_MONO', parameters: { delayTimeMs: 4000 } };
-    p.blocks[1] = { id: 2, family: 'DELAY', effectType: 'DELAY_MONO', parameters: { delayTimeMs: 2000 } }; // 6000ms total
+    p.blocks[0] = { id: 1, family: 'DELAY', effectType: 'DELAY_MONO_DELAY', parameters: { delayTimeMs: 4000 } };
+    p.blocks[1] = { id: 2, family: 'DELAY', effectType: 'DELAY_MONO_DELAY', parameters: { delayTimeMs: 2000 } }; // 6000ms total
 
     const result = validateProgram(p);
     expect(result.isValid).toBe(false);

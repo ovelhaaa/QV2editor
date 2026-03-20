@@ -1,0 +1,766 @@
+Equalization
+EQ Type
+Lowpass Filter
+Bandpass Filter
+Highpass Filter
+Lowpass Shelf
+Highpass Shelf
+1 Band Low
+Parametric
+1 Band High
+Parametric
+2 Band Sweep
+Shelf
+3 Band Parametric
+
+4 Band Parametric
+
+5 Band Graphic
+Resonator
+Mono Tremolo
+Stereo Tremolo
+Stereo Simulator
+
+QuadraVerb 2 Reference Manual
+
+Parameters
+Page#
+Lowpass Fc (frequency): 20Hz-10kHz
+1
+Bandpass Fc: 200Hz-10kHz,
+1
+BW (bandwidth): 0.20-2.50 Octaves
+Highpass Fc: 100Hz-20kHz
+1
+Lowpass: 20Hz-10kHz, Gain: ± 14dB
+1
+Highpass: 100Hz-20kHz, Gain: ±14dB
+1
+Bandpass: 20Hz-2000Hz, Gain: ± 14dB,
+1
+BW: 0.20-2.00 Octaves
+Bandpass: 200Hz-10kHz, Gain: ±14dB
+1
+BW: 0.20-2.50 Octaves
+Lowpass: 20Hz-10kHz, Gain: ±14dB
+1
+Highpass: 100Hz-20kHz, Gain: ±14dB
+2
+Lowpass: 20Hz-10kHz, Gain: ±14dB
+1
+Mid Band: 200Hz-10kHz, Gain: ±14dB,
+2
+BW: 0.20-2.50 Octaves
+Highpass: 100Hz-20kHz, Gain: ±14dB
+3
+Lowpass: 20Hz-10kHz, Gain: ±14dB
+1
+Low Mid: 20Hz-2kHz, Gain: ±14dB,
+2
+BW: 0.20-2.00 Octaves
+High Mid: 1500Hz-10kHz, Gain: ±14dB,
+3
+BW: 0.20-2.50 Octaves
+Highpass: 100Hz-20kHz, Gain: ±14dB
+4
+63Hz/250Hz/1kHz/4kHz/16kHz: ±14dB
+1
+Note: All bands have a two octave bandwidth.
+Resonator Tuning: A0-A5 (4 Octaves), Decay 0-99
+1
+Speed: 0-99, Depth: 0-99, Shape: Soft/Hard
+1
+Speed: 0-99, Depth: 0-99, Shape: Soft/Hard
+1
+Stereo Spread: 0-99 Degrees
+1
+
+69
+
+Chapter 5 - Description of Controls
+
+Pitch
+Pitch Type
+Mono Chorus
+
+Stereo Chorus
+
+Quad Chorus
+
+Mono Flanging
+Stereo Flanging
+Phasor
+Mono Lezlie
+Stereo Lezlie
+
+Pitch Shifter
+Pitch Detune
+Ring Modulator
+
+70
+
+Parameters
+Speed: 0-99, Depth: 0-99, Feedback: 0-99
+Chorus PreDelay: 0-100mS
+Chorus Shape: Sine/Square
+Speed: 0-99, Depth: 0-99, Feedback: 0-99
+PreDelay Chorus 1: 0-100mS, 2: 0-100mS
+Chorus Shape: Sine/Square
+Speed: 0-99, Depth: 0-99, Feedback: 0-99
+PreDelay Chorus 1: 0-100mS, 2: 0-100mS
+PreDelay Chorus 3: 0-100mS, 4: 0-100mS
+Speed: 0-99, Depth: 0-99, Feedback: 0-99
+Flanging Shape: Sine/Triangle
+Speed: 0-99, Depth: 0-99, Feedback: 0-99
+Flanging Shape: Sine/Triangle
+Phasor Speed: 0-99, Depth: 0-99
+Lezlie Motor: On/Off, Speed: Slow/Fast
+High Rotor Level: -12dB to +6dB
+Lezlie Motor: On/Off, Speed: Slow/Fast
+High Rotor Level: -12dB to +6dB
+Stereo Separation: 0-99
+Fine: 0-99, Coarse: ±12 (semi tone)
+Detune Amount: ±99
+Spectrum Shift: ±100
+
+Page#
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+1
+2
+1
+1
+2
+1
+2
+3
+1
+1
+1
+
+QuadraVerb 2 Reference Manual
+
+Description of Controls - Chapter 5
+
+Delay
+Delay Type
+Mono Delay
+
+Stereo Delay
+
+Ping Pong Delay
+
+Multi Tap Delay
+
+Tap Tempo Mono
+Delay
+Tap Tempo Ping
+Pong
+
+QuadraVerb 2 Reference Manual
+
+Parameters
+Delay Time: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+(. = dotted, T = triplet)
+Feedback: 0-99
+Left Delay: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+Left Feedback: 0-99
+Right Delay: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+Right Feedback: 0-99
+Delay Time: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+Feedback: 0-99
+Tap 1, Del: 0.1-5000mS, Vol: Off/-48-0dB, L<->R:
+<99-<50>-99, FB: 0-99
+Tap 2, Del: 0.1-5000mS, Vol: Off/-48-0dB, L<->R:
+<99-<50>-99, FB: 0-99
+Tap 3, Del: 0.1-5000mS, Vol: Off/-48-0dB, L<->R:
+<99-<50>-99, FB: 0-99
+Tap 4, Del: 0.1-5000mS, Vol: Off/-48-0dB, L<->R:
+<99-<50>-99, FB: 0-99
+Tap 5, Del: 0.1-5000mS, Vol: Off/-48-0dB, L<->R:
+<99-<50>-99, FB: 0-99
+Master Feedback 0-99
+Delay Time: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+Feedback: 0-99
+Delay Time: 0.1-5000mS, Beat Count: 1/2, 1/4.,
+1/4, 1/4T, 1/8., 1/8, 1/8T, 1/16, 1/32
+Feedback: 0-99
+
+Page #
+1
+2
+1
+2
+3
+4
+1
+2
+1
+2
+3
+4
+5
+6
+1
+2
+1
+2
+
+71
+
+Chapter 5 - Description of Controls
+
+Reverberation
+Reverb Type
+Mono Room
+
+Room 1
+
+Hall 1
+
+Plate 1
+
+Chamber 1
+
+Room 2
+
+72
+
+Parameters
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Attack: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+
+Page #
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+QuadraVerb 2 Reference Manual
+
+Description of Controls - Chapter 5
+
+Reverb Type
+Hall 2
+
+Plate 2
+
+Chamber 2
+
+Large Plate
+
+Large Room
+
+Parameters
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Swirl: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500S
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Attack: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Attack: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Swirl: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reflection Level: 0-99, Spread: 0-99
+Reverberation Swirl: 0-99
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+
+QuadraVerb 2 Reference Manual
+
+Page #
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+73
+
+Chapter 5 - Description of Controls
+
+Reverb Type
+Spring
+
+Nonlinear
+
+Reverse
+
+74
+
+Parameters
+Decay: 0-99, Damping Hi: 0-99, Lo: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Gate Trig: Off/Left/Right/L&R, Hold: 10-500 mS
+Gate Release Time: 0-500mS
+Gate Level: 0-99
+Gate Hold Time: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+Input High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+Reverse Time: 0-99
+Reverb Density: 0-99, Diffusion: 0-99
+Input High Frequency Roll Off: 200Hz-20,000Hz
+Predelay: 1-250mS, Mix: <99-<50>-99>
+
+Page #
+1
+2
+4
+5
+7
+8
+9
+1
+2
+3
+1
+2
+3
+
+QuadraVerb 2 Reference Manual
+
+Advanced Applications - Chapter 6
+
+CHAPTER 6
+
+ADVANCED APPLICATIONS
+MIDI Functions
+The QuadraVerb 2 provides many MIDI functions, including being able to respond to
+program changes, sending and receiving Program information via SysEx dumps, and
+realtime control over various effect parameters via MIDI controllers. For more
+information about basic MIDI connections, see chapter 1.
+
+Global MIDI Channel
+The Global MIDI Channel is used to receive program change messages, as well as
+other MIDI events for use with the realtime modulation capabilities provided in the
+QuadraVerb 2.
+To set the QuadraVerb 2’s MIDI channel:
+
+¿ Press [MIDI].
+The [MIDI] LED will light and the display will read:
+
+MIDI CHANNEL: 1
+¡
+
+Turn the [VALUE/ENTER] knob to set the Global MIDI Channel to either 1
+through 16, or OMNI (all 16 channels simultaneously).
+
+Receiving Program Changes
+In order to recall programs or control parameters on the QuadraVerb 2 from a MIDI
+control device (keyboard, drum pad, guitar or bass controller, sequencer, etc.):
+
+¿ Connect the control device’s MIDI OUT to the QuadraVerb 2’s [MIDI IN].
+This provides a one-way connection, since this is all we need to control the
+QuadraVerb via MIDI (we don’t require the QuadraVerb to send MIDI information
+back to the other device).
+
+¡
+
+Press [MIDI].
+The [MIDI] LED will light.
+
+¬ Press [PAGE >] to access MIDI Page 2.
+The display will read:
+
+MIDI PROGRAM CHANGE: OFF
+÷ Turn the [VALUE/ENTER] knob to turn MIDI Program Changes “ON”.
+Incoming MIDI program change messages received on the same channel the
+QuadraVerb 2 is set to will recall the same numbered User Program in the
+QuadraVerb 2.
+
+Program Change Table
+Alternatively, you can use a Program Change Table in the QuadraVerb 2 which remaps incoming program change messages so that they recall QuadraVerb 2
+
+QuadraVerb 2 Reference Manual
+
+75
+
+Chapter 6 - Advanced Applications
+
+Programs of a different number. This is especially useful since MIDI program changes
+only allow for 128 different programs to be recalled (0–127). Using the Program
+Table, you can have any incoming MIDI program change message recall any of the
+200 Programs in the QuadraVerb 2. This is done by assigning the MIDI Program
+Change parameter (described above) to “TABLE”; then select a MIDI program change
+number and assign it a Program. Example: If you programmed the Table so that
+program message 101 was mapped to Preset 33, and message 102 was mapped to
+User 39, then sending a MIDI program change message of 101 to the QuadraVerb 2
+would recall Program Preset 33, and sending a message of 102 would recall Program
+User 39.
+To incorporate and modify the Program Change Table:
+
+¿ Press [MIDI].
+The [MIDI] LED will light.
+
+¡
+
+Press [PAGE >] to access MIDI Page 2.
+The display will read:
+
+MIDI PROGRAM CHANGE: ON
+¬ Turn the [VALUE/ENTER] knob to the right to set the MIDI Program Change
+parameter to “TABLE”.
+
+MIDI PROGRAM CHANGE: TABLE
+÷ Press [PAGE >] to access MIDI Page 3.
+You can edit the program change table, which can substitute alternate Programs
+(Preset 00-99 and User 00-99) for each of the 128 MIDI program change
+messages.
+
+PROGRAM TABLE: 000 = 00 User
+ƒ Turn the [VALUE/ENTER] knob to select a program change number from 000–
+127 to be re-mapped.
+
+ª
+
+Press [PAGE >] to advance the cursor to the second field in the display.
+
+PROGRAM TABLE: 000 = 00 User
+D Use the [VALUE/ENTER] knob to select a QuadraVerb 2 Program for the
+selected MIDI program change message to be re-mapped to (Preset 00–99 or
+User 00–99).
+
+76
+
+QuadraVerb 2 Reference Manual
+
+Advanced Applications - Chapter 6
+
+SysEx Storage
+To send and receive program information via SysEx dumps using a computer, or some
+other SysEx storage device (such as the Alesis DataDisk), or another QuadraVerb 2:
+
+¿ Connect the other device’s MIDI OUT to the QuadraVerb 2’s [MIDI IN].
+¡
+
+Connect the QuadraVerb 2’s [MIDI OUT] to the other device’s MIDI IN.
+This provides two-way communication between the devices.
+
+¬ Press [MIDI].
+The [MIDI] LED will light.
+
+÷ Press [< PAGE] to select MIDI Page 6.
+The display will read:
+
+SEND MIDI PROGRAM: 00 TO 00
+ƒ Use the [VALUE/ENTER] knob to select a User Program from 00-99, or the
+current Program being used (EDIT), or ALL User Programs.
+To send all User Programs, turn the [VALUE/ENTER] knob all the way to the right
+to select “ALL”.
+Optionally, when sending a single Program to another QuadraVerb 2, you can
+choose to send it to a different location. When you select a Program to be sent, the
+second field (which represents the destination location) is linked and moves along
+with it. To select a different location number to send this Program to:
+
+ª
+
+Press [PAGE >] and use the [VALUE/ENTER] knob to select a destination
+location (00–99 or EDIT).
+If you chose to send “ALL” User Programs, the second field will disappear.
+
+D Set the receiving MIDI device to receive or record the MIDI information about to be
+sent from the QuadraVerb 2.
+
+« Press the [VALUE/ENTER] button to transmit.
+If sending “ALL” User Programs, during the dump the display will read:
+
+MIDI PROGRAM DUMP IN
+PROGRESS...
+If sending a single Program, the display will not change when the
+[VALUE/ENTER] button is pressed, since this effectively takes no time at all.
+
+» When you send a SysEx dump back to the QuadraVerb 2, it will automatically go
+into receive mode (you do not have to do anything special). When this occurs,
+the display will momentarily read:
+
+RECEIVING MIDI DATA...
+If you don’t want the Q2 to receive SysEx dumps, go to MIDI Page 5, and set System
+Exclusive Receive to OFF.
+
+MIDI Thru
+QuadraVerb 2 Reference Manual
+
+77
+
+Chapter 6 - Advanced Applications
+
+In order to pass on MIDI information from a control device thru the QuadraVerb 2 to
+another MIDI device:
+
+¿ Connect the control device’s MIDI OUT to the QuadraVerb 2’s [MIDI IN].
+¡
+
+Connect the QuadraVerb 2’s [MIDI OUT] to the MIDI IN of the other device you
+wish to control.
+
+¬ Press [MIDI].
+The [MIDI] LED will light.
+
+÷ Press [PAGE >] four times to advance to MIDI Page 4.
+The display will read:
+
+MIDI THRU: OFF
+ƒ Turn the [VALUE/ENTER] knob to the right to turn MIDI Thru “ON”.
+MIDI THRU: ON
+
+Realtime Modulation Functions
+You can use various MIDI messages (such as note number, velocity, aftertouch, or
+pitch-bend, etc.) to control parameters in the QuadraVerb 2, such as delay time, room
+size, etc. This is accomplished by way of the QuadraVerb 2’s MIDI Modulation Matrix.
+Modulation parameters are stored in the Program, and therefore can be setup
+differently for each of the Programs in memory.
+Use the [MODULATION] button to program which MIDI messages control which
+parameters in each Program, and by how much. This is done by following three steps:
+
+¿ Select a Modulator (or modulation patch), of which there are 8 per Program;
+¡
+
+Choose the Target; i.e. what is to be modulated;
+
+¬ Choose the Source; i.e. what is doing the modulating; and,
+÷ Set the Amplitude, or amount, of modulation.
+Keep in mind that a target may be modulated by more than one source. Likewise, a
+single source can modulate as many as 8 different targets. It is this kind of flexibility
+that matrix modulation affords.
+
+J
+
+78
+
+Modulation sources must be received on the same MIDI channel the QuadraVerb 2 is
+set to in order for the Modulators to function properly.
+
+QuadraVerb 2 Reference Manual
+
+Advanced Applications - Chapter 6
+
+Selecting the Modulator
+Once you press the [MODULATION] button, you can turn the [VALUE/ENTER] knob
+to select one of the eight Modulators. Think of each Modulator as a modulation patch
+which routes a Source to a Target using a particular amplitude.
+
+¿ Press [MODULATION].
+The [MODULATION] button’s LED will light, and the display will read:
+
+MOD 1 TO:DLY 1-TAP 1 DELAY
+TIME
+The cursor appears beneath the Modulator number. This is Modulation Page 1,
+which allows you to choose a Target (see below).
+
+¡
+
+Turn the [VALUE/ENTER] knob to select a Modulator (1–8).
+
+At any time you can move between the 8 Modulators by first moving the cursor back
+to the far left of the display (using the [< PAGE >] buttons), and then turning the
+[VALUE/ENTER] knob to select a different Modulator.
+
+Choosing a Target
+Once you have selected a Modulator, you must then select the Target to be
+modulated. The Target is broken down into two parts: first, you choose one of the
+active Blocks in the current Program, then you choose a parameter within the Block.
+
+¿ With [MODULATION] selected (its LED should be lit), press [PAGE >].
+The cursor will advance to the second field in the display:
+
+MOD 1 TO:DLY 1-TAP 1 DELAY
+TIME
+The cursor appears beneath the Modulator Target Block.
+
+¡
+
+Turn the [VALUE/ENTER] knob to select a Block.
+The display will look different depending on each Block’s defined type. In the
+display example above, the first Block is a Delay (DLY). The number (1) tells us
+this is Block #1. If you turn the [VALUE/ENTER] knob, you will see other options
+defining the Block’s type and number (example: PCH 2, EQ 3, RVB 4, etc.).
+
+¬ Press [PAGE >] to advance the cursor to the next field in the display.
+MOD 1 TO:DLY 1-TAP 1 DELAY
+TIME
+The cursor appears beneath the Modulator Target Parameter.
+
+÷ Turn the [VALUE/ENTER] knob to select a Parameter to be modulated in the
+selected Block.
+The parameters available will of course depend on the selected Block’s type.
+Here is a list of possible Target Parameters, listed with each effect type:
+
+QuadraVerb 2 Reference Manual
+
+79
+
+Chapter 6 - Advanced Applications
+
+Type
+EQ
