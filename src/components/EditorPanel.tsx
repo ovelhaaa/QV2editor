@@ -1,5 +1,7 @@
 import type { BlockId, Program, Route, RouteDestination, RouteSource } from '../domain/types';
-import { effectMetadataTable } from '../domain/metadata';
+import { effectTypes } from '../domain/effectTypes';
+import { changeBlockFamily, changeBlockEffectType } from '../domain/parameterHelpers';
+import { ParameterFormRenderer } from './ParameterFormRenderer';
 
 interface EditorPanelProps {
   program: Program;
@@ -98,27 +100,54 @@ export function EditorPanel({
 }
 
 function BlockEditor({ block, program, onUpdateProgram }: { block: Program['blocks'][0], program: Program, onUpdateProgram: (p: Program) => void }) {
-  const updateBlock = (updates: Partial<Program['blocks'][0]>) => {
-    const newBlocks = program.blocks.map(b => b.id === block.id ? { ...b, ...updates } : b);
-    onUpdateProgram({ ...program, blocks: newBlocks });
-  };
-
   const handleFamilyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const family = e.target.value as any;
-    let effectType = null;
+    const newBlock = changeBlockFamily(block, family, effectTypes);
 
     // Auto-select first available effect for the new family to simplify UI for now
     if (family !== 'OFF') {
-      const available = Object.values(effectMetadataTable).filter(m => m.family === family);
+      const available = effectTypes.filter(m => m.family === family);
       if (available.length > 0) {
-        effectType = available[0].id;
+        const withEffect = changeBlockEffectType(newBlock, available[0].id, effectTypes);
+        onUpdateProgram({
+          ...program,
+          blocks: program.blocks.map(b => b.id === block.id ? withEffect : b)
+        });
+        return;
       }
     }
 
-    updateBlock({ family, effectType, parameters: {} });
+    onUpdateProgram({
+      ...program,
+      blocks: program.blocks.map(b => b.id === block.id ? newBlock : b)
+    });
   };
 
-  const availableEffects = Object.values(effectMetadataTable).filter(m => m.family === block.family);
+  const handleEffectTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const effectType = e.target.value;
+    const newBlock = changeBlockEffectType(block, effectType, effectTypes);
+    onUpdateProgram({
+      ...program,
+      blocks: program.blocks.map(b => b.id === block.id ? newBlock : b)
+    });
+  };
+
+  const handleParameterChange = (parameterId: string, value: any) => {
+    const newBlock = {
+      ...block,
+      parameters: {
+        ...block.parameters,
+        [parameterId]: value
+      }
+    };
+    onUpdateProgram({
+      ...program,
+      blocks: program.blocks.map(b => b.id === block.id ? newBlock : b)
+    });
+  };
+
+  const availableEffects = effectTypes.filter(m => m.family === block.family);
+  const currentEffectType = effectTypes.find(e => e.id === block.effectType);
 
   // Routes where this block is the destination
   const blockDestId: RouteDestination = `Block${block.id}`;
@@ -173,16 +202,24 @@ function BlockEditor({ block, program, onUpdateProgram }: { block: Program['bloc
               <select
                 className="w-full text-sm border rounded p-1"
                 value={block.effectType || ''}
-                onChange={e => updateBlock({ effectType: e.target.value })}
+                onChange={handleEffectTypeChange}
               >
                 {availableEffects.map(efx => (
-                  <option key={efx.id} value={efx.id}>{efx.name}</option>
+                  <option key={efx.id} value={efx.id}>{efx.displayName}</option>
                 ))}
               </select>
             </div>
           )}
         </div>
       </div>
+
+      {currentEffectType && (
+        <ParameterFormRenderer
+          parametersSchema={currentEffectType.parameterSchema}
+          currentValues={block.parameters}
+          onChange={handleParameterChange}
+        />
+      )}
 
       <div className="bg-white p-3 rounded shadow-sm border border-green-200">
         <h3 className="font-bold text-green-700 border-b pb-1 mb-2">Inputs (Routing)</h3>

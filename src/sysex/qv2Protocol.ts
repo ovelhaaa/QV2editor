@@ -4,7 +4,7 @@ import { decodeMidiEdit, encodeMidiEdit } from "./qv2EditCodec";
 import type { QV2MidiEditData } from "./qv2EditCodec";
 import { decodeGlobalDump, encodeGlobalDumpRequest } from "./qv2GlobalCodec";
 import { decodeBlockBypassDump, encodeBlockBypassRequest } from "./qv2BlockBypassCodec";
-import { decodeProgramTableDump, encodeProgramTableRequest } from "./qv2ProgramTableCodec";
+import { decodeProgramTableDump } from "./qv2ProgramTableCodec"; // encodeProgramTableRequest unused for now
 import { decodeRawProgramDump } from "./qv2ProgramDumpCodec";
 import type { QV2DecodedMessage } from "./qv2MessageTypes";
 
@@ -92,7 +92,7 @@ export function buildUserBank1ProgramDumpRequest(programNumber: number): Uint8Ar
   });
 }
 
-export function buildUserBank0ProgramDumpRequest(programNumber: number): Uint8Array {
+export function buildUserBank0ProgramDumpRequest(_programNumber: number): Uint8Array {
   // TODO_FROM_SERVICE_MANUAL: Confirm opcode for USER_BANK0_PROGRAM_DUMP_REQUEST
   // The service manual needs to be checked before defining this request opcode.
   throw new Error("USER_BANK0_PROGRAM_DUMP_REQUEST opcode not confirmed in manual yet.");

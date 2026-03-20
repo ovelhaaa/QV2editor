@@ -1,5 +1,6 @@
 import type { BlockId, Program, Route, RouteDestination } from './types';
-import { effectMetadataTable } from './metadata';
+import { effectTypes } from './effectTypes';
+import { getEffectTypeDefinition } from './parameterHelpers';
 
 export interface ValidationResult {
   isValid: boolean;
@@ -65,20 +66,25 @@ export function validateProgram(program: Program): ValidationResult {
   // 2. Resource Accumulation - Blocks
   for (const block of program.blocks) {
     if (block.effectType && block.family !== 'OFF') {
-      const meta = effectMetadataTable[block.effectType];
+      const meta = getEffectTypeDefinition(block.effectType, effectTypes);
       if (meta) {
-        totalDsp += meta.dspCostPercent;
-        totalLfos += meta.lfoCost;
+        totalDsp += meta.resourceUsage.dspPercentBase;
+        totalLfos += meta.resourceUsage.lfoCountBase;
 
-        // Simple mock of taking memory from parameter or maxing
-        // In reality, this relies on block.parameters like 'delayTimeMs' or 'predelayMs'
-        const delayMs = block.parameters?.delayTimeMs || 0;
+        let delayMs = 0;
+        if (meta.dynamicResourceUsage) {
+          const dynamic = meta.dynamicResourceUsage(block.parameters || {});
+          if (dynamic.dspPercent !== undefined) totalDsp += dynamic.dspPercent;
+          if (dynamic.lfoCount !== undefined) totalLfos += dynamic.lfoCount;
+          if (dynamic.effectMemoryMs !== undefined) delayMs = dynamic.effectMemoryMs;
+        }
+
         if (delayMs > MAX_DELAY_PER_LINE_MS) {
            errors.push({ type: 'EFFECT_MEMORY_IS_FULL', message: `Block ${block.id} delay line exceeds max ${MAX_DELAY_PER_LINE_MS} ms.` });
         }
         totalDelayMemoryMs += delayMs;
 
-        if (meta.usesMicroprocessorAssist) {
+        if (meta.resourceUsage.usesMicroprocessorAssist) {
           if (hasMicroprocessorAssist) {
              errors.push({ type: 'BLOCK_COMBINATION_NOT_ALLOWED', message: `BLOCK COMBINATION NOT ALLOWED: Only one effect requiring microprocessor assist is allowed per Program.` });
           }
