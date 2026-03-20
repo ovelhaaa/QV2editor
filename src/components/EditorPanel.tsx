@@ -127,8 +127,10 @@ function BlockEditor({ block, program, onUpdateProgram }: { block: Program['bloc
   const addIncomingRoute = () => {
     // Default source that is not itself
     let defaultSource: RouteSource = 'L_IN';
-    if (block.id === 1) defaultSource = 'L_IN';
-    else defaultSource = `Block1.L`;
+    if (block.id > 1) {
+      // Default to the previous block's L output
+      defaultSource = `Block${block.id - 1}.L` as RouteSource;
+    }
 
     const newRoute: Route = {
       id: crypto.randomUUID(),
