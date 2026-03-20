@@ -461,12 +461,19 @@ export const effectTypes: EffectTypeDefinition[] = [
     // 1st tier (Room 1, Hall 1, Plate 1, Chamber 1): DSP ~33-40, LFO 0
     // 2nd tier (Room 2, Hall 2, Plate 2, Chamber 2): DSP ~61-76, LFO 1
     const isTier2 = type.endsWith("_2");
-    let dsp = 33;
-    if (type === "CHAMBER_1") dsp = 40;
-    if (type === "ROOM_2") dsp = 76;
-    if (type === "HALL_2") dsp = 61;
-    if (type === "PLATE_2" || type === "CHAMBER_2") dsp = 64;
 
+    const dspCosts: Record<string, number> = {
+      "ROOM_1": 33,
+      "HALL_1": 33,
+      "PLATE_1": 33,
+      "CHAMBER_1": 40,
+      "ROOM_2": 76,
+      "HALL_2": 61,
+      "PLATE_2": 64,
+      "CHAMBER_2": 64,
+    };
+
+    const dsp = dspCosts[type];
     const baseId = `REVERB_${type}`;
     const displayName = type.replace("_", " ");
 
