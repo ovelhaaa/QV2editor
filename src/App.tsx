@@ -3,6 +3,7 @@ import { useProgramState } from './hooks/useProgramState';
 import type { BlockId } from './domain/types';
 import { GraphView } from './components/GraphView';
 import { EditorPanel } from './components/EditorPanel';
+import { MidiDebugPanel } from './components/MidiDebugPanel';
 import { Download, Upload } from 'lucide-react';
 import './App.css';
 
@@ -66,6 +67,7 @@ function App() {
           onUpdateProgram={setProgram}
         />
       </main>
+      <MidiDebugPanel />
     </div>
   );
 }
