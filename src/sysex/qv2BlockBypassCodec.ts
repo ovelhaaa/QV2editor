@@ -38,14 +38,12 @@ export function decodeBlockBypassDump(payload: Uint8Array): QV2BlockBypassState 
 
 export function encodeBlockBypassDump(state: QV2BlockBypassState): Uint8Array {
   let raw8Bit = 0;
-  if (state[1]) raw8Bit |= (1 << 0);
-  if (state[2]) raw8Bit |= (1 << 1);
-  if (state[3]) raw8Bit |= (1 << 2);
-  if (state[4]) raw8Bit |= (1 << 3);
-  if (state[5]) raw8Bit |= (1 << 4);
-  if (state[6]) raw8Bit |= (1 << 5);
-  if (state[7]) raw8Bit |= (1 << 6);
-  if (state[8]) raw8Bit |= (1 << 7);
+
+  for (let i = 1; i <= 8; i++) {
+    if (state[i as keyof QV2BlockBypassState]) {
+      raw8Bit |= (1 << (i - 1));
+    }
+  }
 
   return encode8BitTo2MidiBytes(raw8Bit);
 }
