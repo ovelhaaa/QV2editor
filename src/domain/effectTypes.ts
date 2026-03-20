@@ -414,10 +414,8 @@ export const effectTypes: EffectTypeDefinition[] = [
     parameterSchema: [
       ...([1, 2, 3, 4, 5].map(i => [
         pFloat(`tap${i}DelayMs`, `Tap ${i} Delay`, 0.1, 5000, `${i}`, "mS", 0.1),
-        // Volume: Off/-48-0dB => Will model as int from -49 to 0, where -49 means Off for simplicity in renderer, or we can use string type if needed.
-        // But the requirements say int/float/bool/enum. We can map Off to -49, or use a custom UI handling.
-        // TODO_FROM_REFERENCE_MANUAL: Handle 'Off' value for tap volume correctly.
-        pInt(`tap${i}VolumeDb`, `Tap ${i} Volume`, -48, 0, `${i}`, "dB"),
+        // Volume: Off/-48-0dB => Will model as int from -49 to 0, where -49 means Off for simplicity in renderer.
+        pInt(`tap${i}VolumeDb`, `Tap ${i} Volume`, -49, 0, `${i}`, "dB"),
         pInt(`tap${i}Pan`, `Tap ${i} L<->R`, -99, 99, `${i}`), // <99-<50>-99 => -99 to 99
         pInt(`tap${i}Feedback`, `Tap ${i} Feedback`, 0, 99, `${i}`)
       ]).flat()),

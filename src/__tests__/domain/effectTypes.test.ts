@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { effectTypes } from '../../domain/effectTypes';
 import { getEffectTypesByFamily, buildDefaultParameters, changeBlockFamily, changeBlockEffectType, sanitizeParameters } from '../../domain/parameterHelpers';
-import type { Block, BlockFamily } from '../../domain/types';
+import type { Block } from '../../domain/types';
 
 describe('parameterHelpers', () => {
   const mockTable = effectTypes;

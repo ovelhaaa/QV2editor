@@ -76,11 +76,19 @@ export function ParameterFormRenderer({ parametersSchema, currentValues, onChang
   };
 
   const renderParameter = (def: ParameterDefinition) => {
+    let displayValue = currentValues[def.id] !== undefined ? currentValues[def.id] : '';
+    // Special formatting for "Off" values mapped to -49 for Tap Volume
+    if (def.id.startsWith('tap') && def.id.endsWith('VolumeDb') && displayValue === -49) {
+      displayValue = 'Off';
+    }
+
     return (
       <div key={def.id} className="flex flex-col mb-3">
         <label className="text-xs font-semibold text-gray-700 flex justify-between mb-1">
           <span>{def.label}</span>
-          {def.unit && <span className="text-gray-500 font-normal ml-1">({def.unit})</span>}
+          <span className="text-gray-500 font-normal ml-1 text-[10px]">
+            {displayValue} {def.unit && displayValue !== 'Off' ? def.unit : ''}
+          </span>
         </label>
         {renderInput(def)}
         <div className="text-[10px] text-gray-400 flex justify-between mt-1">
