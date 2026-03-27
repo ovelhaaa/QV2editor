@@ -1,59 +1,42 @@
-import { unpackProgramBytesFromMidiSafe } from "./qv2Packing";
-
 export interface QV2RawProgramDump {
-  bank: "user0" | "user1" | "edit"; // edit is inferred based on context/opcode
+  bank: "user0" | "user1" | "edit";
   programNumber: number;
   unpackedData: Uint8Array; // 256 bytes
   commonRegion: Uint8Array; // 92 bytes
   variableRegion: Uint8Array; // 164 bytes
-  routingRegionValid?: boolean;
 }
 
+/**
+ * Decodes a 256-byte unpacked Program Dump payload into its two main regions
+ * and extracts basic metadata if possible.
+ *
+ * Sources:
+ * - docs/Alesis-Quadraverb2-sp-sm.html (MIDI User Bank 1 Program Dump Request / 0C Program Dump)
+ */
 export function decodeRawProgramDump(
-  bank: "user0" | "user1" | "edit",
-  payload: Uint8Array
+  bytes256: Uint8Array,
+  bank: "user0" | "user1" | "edit" = "edit", // Normally derived from the SysEx header which is not in the 256-byte payload
+  programNumber: number = 0 // Normally derived from the SysEx header
 ): QV2RawProgramDump {
-  if (payload.length < 1) {
-    throw new Error("Program Dump payload missing program number");
+  if (bytes256.length !== 256) {
+    throw new Error(`Invalid unpacked payload length: expected 256 bytes, got ${bytes256.length}`);
   }
 
-  const programNumber = payload[0];
-  const packedData = payload.slice(1);
+  // Common Parameter Region (0..91)
+  const commonRegion = bytes256.slice(0, 92);
 
-  // Unpack MIDI-safe 7-bit chunks back into 256 bytes
-  const unpackedData = unpackProgramBytesFromMidiSafe(packedData, 256);
+  // Variable Parameter Region (92..255)
+  const variableRegion = bytes256.slice(92, 256);
 
-  if (unpackedData.length < 256) {
-    throw new Error(`Invalid unpacked length for Program Dump: ${unpackedData.length}`);
-  }
-
-  // Common region is first 92 bytes
-  const commonRegion = unpackedData.slice(0, 92);
-
-  // Variable region is remaining 164 bytes
-  const variableRegion = unpackedData.slice(92, 256);
-
-  // Detect routing region termination FF FF
-  // TODO_FROM_SERVICE_MANUAL: Confirm exact offset of routing region
-  // Usually it sits in the variable region or common.
-  let routingRegionValid = false;
-
-  for (let i = 0; i < unpackedData.length - 1; i++) {
-    if (unpackedData[i] === 0xFF && unpackedData[i + 1] === 0xFF) {
-      routingRegionValid = true;
-      break;
-    }
-  }
+  // TODO_FROM_SERVICE_MANUAL: Extract bank/program metadata from payload if embedded inside the 256 bytes,
+  // rather than just passing it in from the SysEx header parser.
+  // docs/Alesis-Quadraverb2-sp-sm.html (Page 58-61 approximate)
 
   return {
     bank,
     programNumber,
-    unpackedData,
+    unpackedData: bytes256,
     commonRegion,
-    variableRegion,
-    routingRegionValid
+    variableRegion
   };
 }
-
-// Higher-level parse functionality will wait for proper layout transcription
-// TODO_FROM_SERVICE_MANUAL: Transcription of 256 byte full layout

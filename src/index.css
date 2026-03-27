@@ -51,11 +51,10 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
+  /* BUG FIX: Removed width: 1126px, max-width: 100%, margin: 0 auto, and border-inline
+     which forced a narrow, centered layout that conflicted with Tailwind's w-screen in App.tsx
+     and caused severe rightward displacement/overflow. */
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
